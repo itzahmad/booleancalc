@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="text-align: center;padding-top: 20rem;">
+        <button id="btn+" onclick="Plus()">+</button>
+        <button id="btn-" onclick="Minus()">-</button>
+        <input type="text" id="txt">
+        <button id="result" onclick="Result()">Result</button>
+        <label for="text" id="output"></label>
+
+
+    </div>
+
+
+    <script>
+        btnPlus = document.getElementById('btn+').textContent;
+        btnMinus = document.getElementById('btn-').textContent;
+
+
+        document.getElementById('txt').value = "";
+
+        //document.getElementById('output').innerText = "kjfjd";
+        const Plus = () => {
+
+            document.getElementById('txt').value += btnPlus;
+        }
+        const Minus = () => {
+            console.log(btnMinus)
+            document.getElementById('txt').value += btnMinus;
+        } 
+ 
+
+        const Result = () => {
+            let inputText = document.getElementById('txt').value;
+            console.log(inputText)
+            let outputText = document.getElementById('output').innerText
+            let letters = /^[0-9a-zA-Z+-]+$/;
+            let outputletters = /^[0-9+-]+$/;
+            if (inputText == '') {
+                console.log('input field cannot be null or empty')
+                document.getElementById('output').innerText = 'input field can be null or empty'
+            }
+            if (inputText.match(letters)) {
+                document.getElementById('output').innerText = 'please enter only + and - and any number'
+            }
+            if (inputText.match(outputletters)) {
+
+                let inputArray;
+                for (let i = 0; i < inputText.length; i++) {
+                    inputArray = inputText[i]
+                }
+                let calculation = eval(inputText);
+                console.log(calculation)
+                document.getElementById('output').innerText = calculation;
+                //if (!(inputArray == '+' || inputArray == '-'))
+            }
+
+
+
+
+        }
+    </script>
+
+</body>
+
+</html>
